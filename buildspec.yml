@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      docker: 18
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - docker login -u AWS -p eyJwYXlsb2FkIjoibUZTUjBZN3RQMXRNSnFCZGxORStod1ltT0FJRmQyRk40MFkyUmxyVmRSWmFheVFubUd0ajVOY1Rqd3YvTmdrWjRKU2NDTGc5Nmt2WmdCc2F1WVIvd0pINlBQSlVjZE15eVVEMHoyZHA1Y3JSUnMxVXNQOEYzTmQ0UU1LUmN1WGVKYU9iblY0R0FUWkZlR3FCWVJONjUvQm50V3ZSNVlucXZJc0l5KzhoMTBQUnQ2YVdJS0U0SWFzV25pN1BvMHEyTG53VUF3MGwyVE1tczRlUnZ5L2hrODJBY3hPWjQwTUNTTkQ3QmxxTGZkNFlwU29tNmpEMXpTdDM2MzVXK3hVbUJPQ2w5NWNDMDF2SlFibm9ITzYyeHhaZG5FVkRYa1Y4bUhEZFNjZkQ3MXQ1ZGd1NDJJazFLdFgvKy9RUUI4T0Q2c2hoVmVkT2xIYmlaR2ROOXNENHAvVmtTN2VKZXZUWkY2dHl4clpSYTFLeVkvUVJzR3pKaFNWVFlDblgva0twUi9jQTluaEdSeTZsT1d2WUZ4TlJYM0ZLSFZQU3FHU29xTDNubkVXODhpVVN6amx1a3FtbWl0Y01LbFE0elp2K0F4bnduNmZFT041NGlPTTI4VjlwQU95T3RkSUxLcC9QZ2hUcXhsM0NnbkZSY1ZYVjJhc2hvbWRoNGZNQVF0Vk43Ym0zQlk3dW41Vk84VTB6T2FNRGtPUUdTY3VsaEV3TlBXdTYxaHNpcWJyZG8yU0VBS1kwMDAxRzIyM1huOXNENzhJYmNqK2l5QnZ3M0dIUDZYQmlyNEJUNFdRMWZHblc4VXNYNmtGMDltZUljeTh1OEc1amhqbTExMTFkdjdRMnRKWWx5ZlRBa0pTM2UrajRneTVYNXZCaDkzMWY3a3hTSHZzOGJzWmhXVnpWL2RMVngyWGdHL29SNVEzaGtnbzU2MGdpQ3ZxL3luSHgxcFl5dVgrT2h3WXZyRTFFUG9zTWhwOVlnOXBRRy9YT2VPRStqc2hLRFU3R2RzdzVKYytWOEliNHRzSnpUK0NNV21SZm0rYy9hQW1aaFNXSVJNSWJaakN4eHR4eGh6NmdOZHVaZi95ZHlZT0dJUk8raVJlM1hvZXN3RVVUOEhGMEdSQzUvN3VQUmFOc3drTzAzUkRnRC9UK21adHprWWdQcGNhemhjNzB6blVRVDBlKzNSVFowSGZpVXppZ0hXWjUzdjY2RnRXck1TcU0zVS9aVlQyY0lVOXUzbmpoZVNhcDY4b2pNQlZxcmVmV20vaGhmV0J0am5scUxoNThzUzhWUlNaM3BrUjhON3RxaXpKZ0l0ZW96L1dwUEtZR3M4VVBEYUR1blNNb0lxOGhqWjYvQ0lSMHg2aG5KNFVnc1owVlBnejJLazJaR2VycTMzalI4OVJTVGZrajE0WTlnalJRWTRsdlRDVFdBc2lBVy83TS9YV2RFKzIrNUI4MyIsImRhdGFrZXkiOiJBUUVCQUhod20wWWFJU0plUnRKbTVuMUc2dXFlZWtYdW9YWFBlNVVGY2U5UnE4LzE0d0FBQUg0d2ZBWUpLb1pJaHZjTkFRY0dvRzh3YlFJQkFEQm9CZ2txaGtpRzl3MEJCd0V3SGdZSllJWklBV1VEQkFFdU1CRUVEQmlhUHZ6VS9Gem94RGhOa0FJQkVJQTc4Y0I0UmJmTW54L3lGejJzcmp0SFRmRDM3RytqamJGcUt1WmM2SEVUTEhwZzVZUno2ODYyTDlqMEpqcFIrUTIxcEF4U1ZXV1UyKzBITWZJPSIsInZlcnNpb24iOiIyIiwidHlwZSI6IkRBVEFfS0VZIiwiZXhwaXJhdGlvbiI6MTU2NzkwNTc0NX0= https://737600544206.dkr.ecr.us-east-1.amazonaws.com
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...          
+      - docker build -t airpg-ecrdo-1bhbgiepj2ax5 .
+      - docker tag airpg-ecrdo-1bhbgiepj2ax5:latest 737600544206.dkr.ecr.us-east-1.amazonaws.com/airpg-ecrdo-1bhbgiepj2ax5:latest    
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push 737600544206.dkr.ecr.us-east-1.amazonaws.com/airpg-ecrdo-1bhbgiepj2ax5:latest
