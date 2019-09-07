@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product
+  labels:
+    app: product
+    tier: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: product
+        tier: frontend
+    spec:
+      containers:
+      - name: product
+        image: aankitatiwari24/air-pg:product
+        ports:
+        - containerPort: 5000

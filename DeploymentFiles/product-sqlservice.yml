@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-sql1
+spec:
+  selector:
+    app: product
+    tier: backend
+  ports:
+  - port: 3306
+  clusterIP: None

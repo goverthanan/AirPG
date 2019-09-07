@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-sqldb
+  labels:
+    app: user
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: user
+        tier: backend
+    spec:
+      containers:
+      - env:
+        - name: MYSQL_DATABASE
+          value: user
+        - name: MYSQL_ROOT_PASSWORD
+          value: test
+        image: mysql:5.7.22
+        name: mysql
+#      - name: mysql
+#        image: mysql:5.7.22
+        ports:
+        - containerPort: 3306
