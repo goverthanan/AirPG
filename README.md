@@ -1,4 +1,4 @@
-Author: Ankita Tiwari
+Author: AirPG - Team Incredibles
 
 # Installation
 - Read the [requirements](docs/install/requirements.md) guide first
